@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Pedra Papel Tesoura Supremo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div>
+    <h1>Pedra Papel Tesoura Supremo</h1>
+    
+    
+    <div class="rules-buttons">
+        <button class="choice-button" onclick="mostrarRegras('Tesoura')">Tesoura</button>
+        <button class="choice-button" onclick="mostrarRegras('Papel')">Papel</button>
+        <button class="choice-button" onclick="mostrarRegras('Pedra')">Pedra</button>
+        <button class="choice-button" onclick="mostrarRegras('Arma')">Arma</button>
+        <button class="choice-button" onclick="mostrarRegras('Raio')">Raio</button>
+        <button class="choice-button" onclick="mostrarRegras('Diabo')">Diabo</button>
+        <button class="choice-button" onclick="mostrarRegras('Dragão')">Dragão</button>
+        <button class="choice-button" onclick="mostrarRegras('Água')">Água</button>
+        <button class="choice-button" onclick="mostrarRegras('Ar')">Ar</button>
+        <button class="choice-button" onclick="mostrarRegras('Esponja')">Esponja</button>
+        <button class="choice-button" onclick="mostrarRegras('Lobo')">Lobo</button>
+        <button class="choice-button" onclick="mostrarRegras('Árvore')">Árvore</button>
+        <button class="choice-button" onclick="mostrarRegras('Humano')">Humano</button>
+        <button class="choice-button" onclick="mostrarRegras('Cobra')">Cobra</button>
+        <button class="choice-button" onclick="mostrarRegras('Fogo')">Fogo</button>
+    </div>
+    
+    <h2 id="regras">Escolha uma opção para ver suas regras</h2>
+
+    <br><br>
+    <select id="opcoes">
+        <option value="Tesoura">Tesoura</option>
+        <option value="Papel">Papel</option>
+        <option value="Pedra">Pedra</option>
+        <option value="Arma">Arma</option>
+        <option value="Raio">Raio</option>
+        <option value="Diabo">Diabo</option>
+        <option value="Dragão">Dragão</option>
+        <option value="Água">Água</option>
+        <option value="Ar">Ar</option>
+        <option value="Esponja">Esponja</option>
+        <option value="Lobo">Lobo</option>
+        <option value="Árvore">Árvore</option>
+        <option value="Humano">Humano</option>
+        <option value="Cobra">Cobra</option>
+        <option value="Fogo">Fogo</option>
+    </select>
+    <br><br>
+    <button onclick="jogar()">Jogar</button>
+
+    <h2 id="resultado"></h2>
+</div>
+
+<script>
+const regras = {
+    Tesoura: "Tesoura vence Papel, Esponja, Lobo, Árvore, Humano, Cobra",
+    Pedra: "Pedra vence Tesoura, Esponja, Lobo, Árvore, Humano, Cobra, Fogo",
+    Papel: "Papel vence Pedra, Arma, Raio, Diabo, Dragão, Água, Ar",
+    Arma: "Arma vence Pedra, Tesoura, Lobo, Árvore, Humano, Cobra, Fogo",
+    Raio: "Raio vence Pedra, Tesoura, Arma, Árvore, Humano, Cobra, Fogo",
+    Diabo: "Diabo vence Pedra, Tesoura, Arma, Raio, Humano, Cobra, Fogo, Dragão",
+    Dragão: "Dragão vence Pedra, Tesoura, Arma, Raio, Diabo, Humano, Cobra, Fogo",
+    Água: "Água vence Pedra, Tesoura, Arma, Raio, Diabo, Dragão, Fogo",
+    Ar: "Ar vence Pedra, Fogo, Arma, Raio, Diabo, Dragão, Água",
+    Esponja: "Esponja vence Água, Arma, Raio, Diabo, Dragão, Ar, Papel",
+    Lobo: "Lobo vence Água, Raio, Diabo, Dragão, Ar, Papel, Esponja",
+    Árvore: "Árvore vence Diabo, Dragão, Ar, Papel, Esponja, Lobo, Água",
+    Humano: "Humano vence Água, Dragão, Ar, Papel, Esponja, Lobo, Árvore",
+    Cobra: "Cobra vence Água, Ar, Papel, Esponja, Lobo, Árvore, Humano",
+    Fogo: "Fogo vence Tesoura, Papel, Esponja, Lobo, Árvore, Humano, Cobra"
+};
+
+function mostrarRegras(opcao) {
+    document.getElementById("regras").innerText = regras[opcao];
+}
+
+function jogar() {
+    const opcoes = ["Tesoura", "Papel", "Pedra", "Arma", "Raio", "Diabo", "Dragão", "Água", "Ar", "Esponja", "Lobo", "Árvore", "Humano", "Cobra", "Fogo"];
+    const escolhaUsuario = document.getElementById('opcoes').value;
+    const escolhaComputador = opcoes[Math.floor(Math.random() * opcoes.length)];
+
+    if (escolhaUsuario === escolhaComputador) {
+        document.getElementById("resultado").innerText = "Empate! Eu escolhi " + escolhaComputador + " e você escolheu " + escolhaUsuario;
+    } else if (
+        (escolhaUsuario === "Tesoura" && ["Papel", "Esponja", "Lobo", "Árvore", "Humano", "Cobra"].includes(escolhaComputador)) ||
+        (escolhaUsuario === "Pedra" && ["Esponja", "Lobo", "Árvore", "Humano", "Cobra", "Fogo"].includes(escolhaComputador)) ||
+        (escolhaUsuario === "Papel" && ["Pedra", "Arma", "Raio", "Diabo", "Dragão", "Água", "Ar"].includes(escolhaComputador)) ||
+        (escolhaUsuario === "Arma" && ["Pedra", "Tesoura", "Lobo", "Árvore", "Humano", "Cobra", "Fogo"].includes(escolhaComputador)) ||
+        (escolhaUsuario === "Raio" && ["Pedra", "Tesoura", "Arma", "Árvore", "Humano", "Cobra", "Fogo"].includes(escolhaComputador)) ||
+        (escolhaUsuario === "Diabo" && ["Pedra", "Tesoura", "Arma", "Raio", "Humano", "Cobra", "Fogo", "Dragão"].includes(escolhaComputador)) ||
+        (escolhaUsuario === "Dragão" && ["Pedra", "Tesoura", "Arma", "Raio", "Diabo", "Humano", "Cobra", "Fogo"].includes(escolhaComputador)) ||
+        (escolhaUsuario === "Água" && ["Pedra", "Tesoura", "Arma", "Raio", "Diabo", "Dragão", "Fogo"].includes(escolhaComputador)) ||
+        (escolhaUsuario === "Ar" && ["Pedra", "Fogo", "Arma", "Raio", "Diabo", "Dragão", "Água"].includes(escolhaComputador)) ||
+        (escolhaUsuario === "Esponja" && ["Água", "Arma", "Raio", "Diabo", "Dragão", "Ar", "Papel"].includes(escolhaComputador)) ||
+        (escolhaUsuario === "Lobo" && ["Água", "Raio", "Diabo", "Dragão", "Ar", "Papel", "Esponja"].includes(escolhaComputador)) ||
+        (escolhaUsuario === "Árvore" && ["Diabo", "Dragão", "Ar", "Papel", "Esponja", "Lobo", "Água"].includes(escolhaComputador)) ||
+        (escolhaUsuario === "Humano" && ["Água", "Dragão", "Ar", "Papel", "Esponja", "Lobo", "Árvore"].includes(escolhaComputador)) ||
+        (escolhaUsuario === "Cobra" && ["Água", "Ar", "Papel", "Esponja", "Lobo", "Árvore", "Humano"].includes(escolhaComputador)) ||
+        (escolhaUsuario === "Fogo" && ["Tesoura", "Papel", "Esponja", "Lobo", "Árvore", "Humano", "Cobra"].includes(escolhaComputador))
+    ) {
+        document.getElementById("resultado").innerText = "Você ganhou! Você escolheu " + escolhaUsuario + " e eu escolhi " + escolhaComputador;
+    } else {
+        document.getElementById("resultado").innerText = "Você perdeu! Eu escolhi " + escolhaComputador + " e você escolheu " + escolhaUsuario;
+    }
+}
+</script>
+</body>
+</html>

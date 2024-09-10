@@ -1,0 +1,104 @@
+/* Reset básico para garantir que todos os navegadores tenham uma base uniforme */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Fundo geral e estilo de corpo */
+body {
+    background: #1e1e1e; /* Cinza escuro */
+    color: #e0e0e0; /* Cinza claro */
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    color: #ff5722; /* Laranja intenso para destacar o título */
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    animation: fadeIn 2s ease-in-out;
+}
+
+h2 {
+    color: #b0bec5; /* Cinza azulado para subtítulos */
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    animation: fadeIn 2s ease-in-out;
+}
+
+button {
+    background: #424242; /* Cinza escuro para botões */
+    border: none;
+    color: #ffffff;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+button:hover {
+    background: #616161; /* Cinza médio para efeito hover */
+    transform: scale(1.05); /* Leve aumento de tamanho ao passar o mouse */
+}
+
+button:active {
+    background: #757575; /* Cinza mais claro quando clicado */
+    transform: scale(0.98); /* Leve redução de tamanho ao clicar */
+}
+
+select {
+    background: #424242; /* Cinza escuro para o dropdown */
+    color: #ffffff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 1em;
+    margin: 10px;
+    transition: background-color 0.3s;
+}
+
+select:hover {
+    background: #616161; /* Cinza médio para efeito hover */
+}
+
+/* Efeito de animação de fade-in */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+#resultado {
+    font-size: 1.2em;
+    color: #ffc107; /* Amarelo para destacar o resultado */
+    margin-top: 20px;
+    animation: slideIn 1s ease-in-out;
+}
+
+/* Efeito de animação de slide-in */
+@keyframes slideIn {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Estilo do container para centralização e responsividade */
+div {
+    background: #333333; /* Cinza escuro para o container */
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 800px;
+    margin: 0 auto;
+}
